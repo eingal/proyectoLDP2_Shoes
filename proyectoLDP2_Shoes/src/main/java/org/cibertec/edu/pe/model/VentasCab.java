@@ -1,5 +1,6 @@
 package org.cibertec.edu.pe.model;
 
-public class VentasCab {
+	public class VentasCab {
+		}			
+	
 
-}
