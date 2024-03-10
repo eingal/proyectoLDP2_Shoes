@@ -1,25 +1,16 @@
 package org.cibertec.edu.pe.model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 @Entity
-@Table(name = "VentasCab")
-public class VentasCab {
+@Table(name = "Ventas")
+public class Ventas {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idVentasCab;
+    private int idVentas;
 
     @Temporal(TemporalType.DATE)
     private Date fechaVenta;
@@ -28,16 +19,19 @@ public class VentasCab {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "ventasCab")
-    private List<VentasDet> detallesVenta;
+    private double montoTotal;
 
+    @OneToMany(mappedBy = "ventas", cascade = CascadeType.ALL)
+    private List<Detalle> detalleVentas;
 
-    public int getIdVentasCab() {
-        return idVentasCab;
+    // Constructor, getters y setters
+
+    public int getIdVentas() {
+        return idVentas;
     }
 
-    public void setIdVentasCab(int idVentasCab) {
-        this.idVentasCab = idVentasCab;
+    public void setIdVentas(int idVentas) {
+        this.idVentas = idVentas;
     }
 
     public Date getFechaVenta() {
@@ -56,11 +50,25 @@ public class VentasCab {
         this.cliente = cliente;
     }
 
-    public List<VentasDet> getDetallesVenta() {
-        return detallesVenta;
+    public double getMontoTotal() {
+        return montoTotal;
     }
 
-    public void setDetallesVenta(List<VentasDet> detallesVenta) {
-        this.detallesVenta = detallesVenta;
+    public void setMontoTotal(double montoTotal) {
+        this.montoTotal = montoTotal;
     }
+
+    public List<Detalle> getDetalleVentas() {
+        return detalleVentas;
+    }
+
+    public void setDetalleVentas(List<Detalle> detalleVentas) {
+        this.detalleVentas = detalleVentas;
+    }
+
+    	@Override
+	public String toString() {
+		return "Venta [idVenta=" + idVentas + ", fechaRegistro=" + fechaVenta + ", montoTotal=" + montoTotal + "]";
+	}
+	
 }

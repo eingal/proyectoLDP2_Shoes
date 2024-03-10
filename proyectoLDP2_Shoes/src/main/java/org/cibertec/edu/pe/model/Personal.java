@@ -6,63 +6,73 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 	
-	
-	@Entity
-	@Table(name = "Personal")
-	public class Personal {
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int idPersonal; 
-	    private String nombreper; 
-	    private String telefonoper; 
-	    private String direccionper;
-	    
-	    
-	    //Constructores
-	    
-		public Personal() {
-		}
+@Entity
+@Table(name = "Personal")
+public class Personal {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idPersonal; 
+    
+    private String dni;
+    private String nombreper; 
+    private String telefonoper; 
+    private String direccionper;
+    
+    //Constructores
+    
+    public Personal() {
+    }
 
-		public Personal(int idPersonal, String nombreper, String telefonoper, String direccionper) {
-		
-			this.idPersonal = idPersonal;
-			this.nombreper = nombreper;
-			this.telefonoper = telefonoper;
-			this.direccionper = direccionper;
-		}
-		//Getters and Setters
+    public Personal(int idPersonal, String dni, String nombreper, String telefonoper, String direccionper) {
+        this.idPersonal = idPersonal;
+    	this.dni = dni;
+        this.nombreper = nombreper;
+        this.telefonoper = telefonoper;
+        this.direccionper = direccionper;
+    }
 
-		public int getIdPersonal() {
-			return idPersonal;
-		}
+    //Getters and Setters
 
-		public void setIdPersonal(int idPersonal) {
-			this.idPersonal = idPersonal;
-		}
+    public int getIdPersonal() {
+        return idPersonal;
+    }
 
-		public String getNombreper() {
-			return nombreper;
-		}
+    public void setIdPersonal(int idPersonal) {
+        this.idPersonal = idPersonal;
+    }
 
-		public void setNombreper(String nombreper) {
-			this.nombreper = nombreper;
-		}
+    public String getNombreper() {
+        return nombreper;
+    }
 
-		public String getTelefonoper() {
-			return telefonoper;
-		}
+    public void setNombreper(String nombreper) {
+        this.nombreper = nombreper;
+    }
 
-		public void setTelefonoper(String telefonoper) {
-			this.telefonoper = telefonoper;
-		}
+    public String getTelefonoper() {
+        return telefonoper;
+    }
 
-		public String getDireccionper() {
-			return direccionper;
-		}
+    public void setTelefonoper(String telefonoper) {
+        this.telefonoper = telefonoper;
+    }
 
-		public void setDireccionper(String direccionper) {
-			this.direccionper = direccionper;
-		}	    
+    public String getDireccionper() {
+        return direccionper;
+    }
+
+    public void setDireccionper(String direccionper) {
+        this.direccionper = direccionper;
+    }
+    
+
+	public String getDni() {
+		return dni;
 	}
 
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+    
+}

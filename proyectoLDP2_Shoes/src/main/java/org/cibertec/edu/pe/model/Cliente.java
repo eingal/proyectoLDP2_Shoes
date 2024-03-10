@@ -9,71 +9,79 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Cliente")
 public class Cliente {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idcliente; 
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idcliente;
+    
+    private String dni;
     private String nombrecli; 
     private String emailcli; 
     private String telefonocli; 
     private String direccioncli;
     
-    
     //Constructores
     
-	public Cliente() {
+    public Cliente() {
+    }
+
+    public Cliente(int idcliente, String dni, String nombrecli, String emailcli, String telefonocli, String direccioncli) {
+        this.idcliente = idcliente;
+        this.dni = dni;
+        this.nombrecli = nombrecli;
+        this.emailcli = emailcli;
+        this.telefonocli = telefonocli;
+        this.direccioncli = direccioncli;
+    }
+
+    //Getters and Setters
+    
+    public int getIdcliente() {
+        return idcliente;
+    }
+
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
+    }
+
+    public String getNombrecli() {
+        return nombrecli;
+    }
+
+    public void setNombrecli(String nombrecli) {
+        this.nombrecli = nombrecli;
+    }
+
+    public String getEmailcli() {
+        return emailcli;
+    }
+
+    public void setEmailcli(String emailcli) {
+        this.emailcli = emailcli;
+    }
+
+    public String getTelefonocli() {
+        return telefonocli;
+    }
+
+    public void setTelefonocli(String telefonocli) {
+        this.telefonocli = telefonocli;
+    }
+
+    public String getDireccioncli() {
+        return direccioncli;
+    }
+
+    public void setDireccioncli(String direccioncli) {
+        this.direccioncli = direccioncli;
+    }
+
+	public String getDni() {
+		return dni;
 	}
 
-	public Cliente(int idcliente, String nombrecli, String emailcli, String telefonocli, String direccioncli) {
-	
-		this.idcliente = idcliente;
-		this.nombrecli = nombrecli;
-		this.emailcli = emailcli;
-		this.telefonocli = telefonocli;
-		this.direccioncli = direccioncli;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
-
-	//Getters and Setters
-	
-	
-	public int getIdcliente() {
-		return idcliente;
-	}
-
-	public void setIdcliente(int idcliente) {
-		this.idcliente = idcliente;
-	}
-
-	public String getNombrecli() {
-		return nombrecli;
-	}
-
-	public void setNombrecli(String nombrecli) {
-		this.nombrecli = nombrecli;
-	}
-
-	public String getEmailcli() {
-		return emailcli;
-	}
-
-	public void setEmailcli(String emailcli) {
-		this.emailcli = emailcli;
-	}
-
-	public String getTelefonocli() {
-		return telefonocli;
-	}
-
-	public void setTelefonocli(String telefonocli) {
-		this.telefonocli = telefonocli;
-	}
-
-	public String getDireccioncli() {
-		return direccioncli;
-	}
-
-	public void setDireccioncli(String direccioncli) {
-		this.direccioncli = direccioncli;
-	}
-     
+    
 }

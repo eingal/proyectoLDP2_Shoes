@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<title>Página de Ventas</title>
+<style>
+    /*Estilo General*/
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s; /* transición suave */
+    }
+    nav a:hover {
+        color: #FFD700; /* Cambia el color al pasar el cursor */
+    }
+    main {
+        padding: 20px;
+    }
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th:last-child, td:last-child {
+        text-align: center;
+    }
+    th {
+        background-color: #333;
+        color: white;
+    }
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    .actions {
+        display: flex;
+        justify-content: center;
+    }
+    .edit, .delete {
+        margin: 0 5px;
+        padding: 5px 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .edit:hover, .delete:hover {
+        background-color: #555;
+    }
+
+</style>
+</head>
+<body>
+<header>
+    <h1>Sistema de Ventas Lady's Shoes</h1>
+    <nav>
+        <a href="/inicio">Inicio</a>
+        <a href="/cliente/mostrar">Clientes</a>      
+        <a href="/producto/mostrar">Productos</a>
+        <a href="/reportes/mostrar">Reportes</a>
+        <a href="/index">Ventas</a>
+        <a href="/personal/mostrar">Empleados</a>
+    </nav>
+</header>
+<main>
+    <h2>Listado de Productos</h2>
+    
+    <a class="btn btn-primary" href="/producto/agregar">Nuevo Producto</a>
+    
+    <div class="alert" role="alert" th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+		th:if="${mensaje != null}" th:text="${mensaje}">
+	</div>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            
+            <tr th:each="producto, iterStat : ${productos}" class="text-lefth">
+                <td class="p-2" th:text="${iterStat.count}"></td>
+                <td class="p-2" th:text="${producto.descripcionprod}"></td>
+                <td class="p-2">
+				    <img th:src="@{/images/{filename}(filename=${producto.imagen})}" style="max-width: 100px; max-height: 100px;" />
+				</td>
+                <td class="p-2" th:text="${producto.precioprod}"></td>
+                <td class="p-2" th:text="${producto.stockprod}"></td>
+                <td>                   
+                    <form th:action="@{/producto/eliminar/} + ${producto.idProducto}" method="get">
+                        <button type="submit" class="btn btn-warning p-2" onclick="return confirmarEliminacion()">
+                            <i class="far fa-trash-alt"></i> Eliminar
+                        </button>
+                        <a th:href="@{/producto/editar/} + ${producto.idProducto}" class="btn btn-success p-2">
+                        	<i class="fas fa-sync-alt"></i> Editar
+                    	</a>
+                    </form>
+                </td>
+            </tr>                   
+        </tbody>
+    </table>
+    <br><br>
+    
+</main>
+<footer>
+    <p>© Grupo 1</p>
+</footer>
+</body>
+</html>
+ 

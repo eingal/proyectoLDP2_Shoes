@@ -6,71 +6,73 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-	@Entity
-	@Table(name = "Producto")
-	public class Producto {
-		
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int idProducto; 
-	    private String nombreprod; 
-	    private String descripcionprod; 
-	    private String precioprod; 
-	    private String stockprod;
-	    
-	    
-	    //Constructores
-	    
-		public Producto() {
-		}
+@Entity
+@Table(name = "Producto")
+public class Producto {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idProducto; 
+    
+   
+    private String descripcionprod; 
+    private String imagen;
+    private double precioprod; 
+    private int stockprod;
+    
+    //Constructores
+    
+    public Producto() {
+    }
 
-		public Producto(int idProducto, String nombreprod, String descripcionprod, String precioprod, String stockprod) {
-		
-			this.idProducto = idProducto;
-			this.nombreprod = nombreprod;
-			this.descripcionprod = descripcionprod ;
-			this.precioprod = precioprod;
-			this.stockprod = stockprod;
-		}
-		//Getters and Setters
+	public Producto(int idProducto, String descripcionprod, String imagen, double precioprod, int stockprod) {
+		this.idProducto = idProducto;
+		this.descripcionprod = descripcionprod;
+		this.imagen = imagen;
+		this.precioprod = precioprod;
+		this.stockprod = stockprod;
+	}
 
-		public int getIdProducto() {
-			return idProducto;
-		}
+	public int getIdProducto() {
+		return idProducto;
+	}
 
-		public void setIdProducto(int idProducto) {
-			this.idProducto = idProducto;
-		}
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
+	}
 
-		public String getNombreprod() {
-			return nombreprod;
-		}
+	public String getDescripcionprod() {
+		return descripcionprod;
+	}
 
-		public void setNombreprod(String nombreprod) {
-			this.nombreprod = nombreprod;
-		}
+	public void setDescripcionprod(String descripcionprod) {
+		this.descripcionprod = descripcionprod;
+	}
 
-		public String getDescripcionprod() {
-			return descripcionprod;
-		}
+	public String getImagen() {
+		return imagen;
+	}
 
-		public void setDescripcionprod(String descripcionprod) {
-			this.descripcionprod = descripcionprod;
-		}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 
-		public String getPrecioprod() {
-			return precioprod;
-		}
+	public double getPrecioprod() {
+		return precioprod;
+	}
 
-		public void setPrecioprod(String precioprod) {
-			this.precioprod = precioprod;
-		}
+	public void setPrecioprod(double precioprod) {
+		this.precioprod = precioprod;
+	}
 
-		public String getStockprod() {
-			return stockprod;
-		}
+	public int getStockprod() {
+		return stockprod;
+	}
 
-		public void setStockprod(String stockprod) {
-			this.stockprod = stockprod;
-		}
+	public void setStockprod(int stockprod) {
+		this.stockprod = stockprod;
+	}
+    
+    
+
 }

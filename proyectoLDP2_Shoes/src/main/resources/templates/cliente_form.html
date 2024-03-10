@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<title>Página de Ventas</title>
+<style>
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: color 0.3s; /* transición suave */
+    }
+    nav a:hover {
+        color: #FFD700; /* Cambia el color al pasar el cursor */
+    }
+    main {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>Sistema de Ventas Lady's Shoes</h1>
+    <nav>
+		<a href="/inicio">Inicio</a>
+        <a href="/cliente/mostrar">Clientes</a>      
+        <a href="/producto/mostrar">Productos</a>
+        <a href="/reportes/mostrar">Reportes</a>
+        <a href="/index">Ventas</a>
+        <a href="/personal/mostrar">Empleados</a>
+    </nav>
+</header>
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="text-center">Registro de Nuevo Cliente</h2>
+            
+            <div class="alert" role="alert" th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+			         th:if="${mensaje != null}" th:text="${mensaje}">
+			</div>
+            
+            <form th:object="${cliente}" th:action="@{/cliente/agregar}" method="post">
+                <div class="mb-3">
+                    <label for="dni_cliente" class="form-label">DNI Cliente:</label>
+                    <input type="text" th:field="*{dni}" class="form-control" id="dni" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nombres_apellidos" class="form-label">Nombres y Apellidos:</label>
+                    <input type="text" th:field="*{nombrecli}" class="form-control" id="nombrecli" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" th:field="*{emailcli}" class="form-control" id="emailcli" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="tel" th:field="*{telefonocli}" class="form-control" id="telefonocli" required>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección:</label>
+                    <input type="text" th:field="*{direccioncli}" class="form-control" id="direccioncli" required>
+                </div>
+                <p class="text-center" style="margin-top: 40px;">					
+					    <button type="reset" class="btn btn-raised btn-warning btn-sm">
+					        <i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR
+					    </button>
+					    <a th:href="@{/cliente/mostrar}" class="btn btn-raised btn-secondary btn-sm">
+					        <i class="fas fa-arrow-left"></i> &nbsp; VOLVER A LA LISTA
+					    </a>
+					    <button type="submit" class="btn btn-raised btn-info btn-sm">
+					        <i class="far fa-save"></i> &nbsp; GUARDAR
+					    </button>
+					</p>
+            </form>
+        </div>
+    </div>
+</main>
+<br><br><br>
+<footer class="bg-dark text-white text-center py-3 fixed-bottom">
+    <p>© Grupo 1</p>
+</footer>
+</body>
+</html>

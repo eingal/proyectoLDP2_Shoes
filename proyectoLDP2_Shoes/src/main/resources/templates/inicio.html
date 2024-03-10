@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Ventas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s; /* transición suave */
+        }
+        nav a:hover {
+            color: #FFD700; /* Cambia el color al pasar el cursor */
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Sistema de Ventas Ladys Shoes</h1>
+    <nav>
+		 <a href="/inicio">Inicio</a>
+        <a href="/cliente/mostrar">Clientes</a>      
+        <a href="/producto/mostrar">Productos</a>
+        <a href="/reportes/mostrar">Reportes</a>
+        <a href="/index">Ventas</a>
+        <a href="/personal/mostrar">Empleados</a>
+    </nav>
+</header>
+<main>
+    <!-- Contenido principal de tu página aquí -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.id}">ID</td>
+                <td th:text="${cliente.nombre}">Nombre</td>
+                <td th:text="${cliente.direccion}">Dirección</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+<footer>
+    <p>© Grupo 1</p>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    
